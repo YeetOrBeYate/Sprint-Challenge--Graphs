@@ -28,6 +28,31 @@ player = Player(world.starting_room)
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 traversal_path = []
+# global dict to hold where we came too and from
+reverse = {
+    "n": "s", 
+    "s": "n", 
+    "e": "w", 
+    "w": "e"}
+
+
+def traverse_maze():
+
+    reversed_traversal_path = []
+    # Dict for rooms visited
+    visited = {}
+
+
+    # Build starting room and exits
+    visited[player.current_room.id] = player.current_room.get_exits()
+
+    # while loop to keep track of when were get through the length of all the rooms
+    while len(visited) < len(room_graph):
+
+
+
+
+
 
 
 
