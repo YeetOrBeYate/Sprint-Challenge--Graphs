@@ -58,6 +58,32 @@ def yeet_or_be_yate():
             #add to visited
             visited[player.current_room.id] = exits
 
+        #when we get to the end of the road
+        if len(visited[player.current_room.id]) == 0:
+            #basically we need to get the last step we took and add it to our traversal path since its what 
+            #we needed to take to get out of the dead end
+            last_step = reversed_traversal_path.pop()
+            #addind it to the t-path
+            traversal_path.append(last_step)
+            #making moving move lololol
+            player.travel(last_step)
+        
+        #finally get to the last available direction
+        else:
+            direction_choices = len(visited[player.current_room.id])
+            # just getting a random index based on the length of our visited dict
+            direction_index = (
+                random.randint(0, direction_choices - 1) if direction_choices > 0 else 0
+            )
+            direction = visited[player.current_room.id][direction_index]
+            print(direction)
+            visited[player.current_room.id].pop(direction_index)#make sure we dont go over the same direction
+            # move player
+            player.travel(direction)
+            # Add to t-path
+            traversal_path.append(direction)
+            reversed_traversal_path.append(reverse[direction])
+
 
 
     return traversal_path
