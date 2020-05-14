@@ -36,7 +36,7 @@ reverse = {
     "w": "e"}
 
 
-def traverse_maze():
+def yeet_or_be_yate():
 
     reversed_traversal_path = []
     # Dict for rooms visited
@@ -49,12 +49,24 @@ def traverse_maze():
     # while loop to keep track of when were get through the length of all the rooms
     while len(visited) < len(room_graph):
 
+        #when we havent visited a room
+        if player.current_room.id not in visited:
+            #getting the room exits 
+            exits = player.current_room.get_exits()
+            
+            exits.remove(reverse[traversal_path[-1]]) #remove from exits array
+            #add to visited
+            visited[player.current_room.id] = exits
+
+
+
+    return traversal_path
 
 
 
 
 
-
+traversal_path = yeet_or_be_yate()
 
 # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()
