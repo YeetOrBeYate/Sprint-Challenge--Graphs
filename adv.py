@@ -53,7 +53,6 @@ def yeet_or_be_yate():
         if player.current_room.id not in visited:
             #getting the room exits 
             exits = player.current_room.get_exits()
-            
             exits.remove(reverse[traversal_path[-1]]) #remove from exits array
             #add to visited
             visited[player.current_room.id] = exits
